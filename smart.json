@@ -1,0 +1,14 @@
+{
+  "name": "stylus-compiler",
+  "description": "Meteor Stylus package extended to support Mixins.",
+  "homepage": "",
+  "author": "Phil Cockfield (https://github.com/philcockfield)",
+  "version": "0.0.1",
+  "git": "",
+  "packages": {
+    "sugar": {},
+    "munit": {
+      "path": "../../libs/meteor-munit"
+    }
+  }
+}
