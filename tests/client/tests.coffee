@@ -17,7 +17,6 @@ describe 'Stylus (base Meteor package tests)', ->
   afterEach -> document.body.removeChild(div)
 
 
-
   it 'compiles a ".styl" file', ->
     UI.materialize(Template.stylus_test_presence, div)
     div.style.display = 'block'
@@ -28,8 +27,6 @@ describe 'Stylus (base Meteor package tests)', ->
     expect(leftBorder).to.equal 'dashed'
 
 
-
-
   it 'imports a ".import.styl" file', ->
     UI.materialize(Template.stylus_test_import, div)
     div.style.display = 'block'
@@ -38,7 +35,6 @@ describe 'Stylus (base Meteor package tests)', ->
     p = div.querySelector('p')
     expect(getStyleProperty(p, 'font-size')).to.equal '20px'
     expect(getStyleProperty(p, 'border-left-style')).to.equal 'dashed'
-
 
 
 

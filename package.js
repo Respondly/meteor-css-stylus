@@ -3,14 +3,19 @@ Package.describe({
 });
 
 
+
+
 Package._transitional_registerBuildPlugin({
-  name: "compileStylus",
-  use: ['coffeescript'],
+  name: 'compileStylus',
+  use: ['coffeescript', 'sugar'],
   sources: [
     'plugin/compile-stylus.js',
-    'plugin/package-mixins.coffee'
+    'plugin/stylus-plugin.coffee'
   ],
-  npmDependencies: { stylus: "0.47.1", nib: "1.0.3" }
+  npmDependencies: {
+    stylus: '0.47.1',
+    nib:    '1.0.3'
+  }
 });
 
 
@@ -24,6 +29,6 @@ Package.on_test(function (api) {
   api.add_files('tests/client/sample/sample.html', 'client');
   api.add_files('tests/client/sample/sample.import.styl', 'client');
   api.add_files('tests/client/sample/sample.styl', 'client');
-  api.add_files('tests/client/base-tests.coffee', 'client');
+  api.add_files('tests/client/tests.coffee', 'client');
 
 });
