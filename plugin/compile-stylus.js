@@ -1,3 +1,12 @@
+/*
+
+Ported from original [Stylus] package within Meteor.
+
+MIT Licence:
+https://github.com/meteor/meteor/blob/master/LICENSE.txt
+
+*/
+
 var fs = Npm.require('fs');
 var stylus = Npm.require('stylus');
 var nib = Npm.require('nib');
