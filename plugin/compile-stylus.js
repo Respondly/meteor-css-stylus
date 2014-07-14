@@ -23,9 +23,11 @@ Plugin.registerSourceHandler("styl", function (compileStep) {
     return;
   }
 
+
   var f = new Future;
   stylus(compileStep.read().toString('utf8'))
     .use(nib())
+    .use(packageMixins())
     .set('filename', compileStep.inputPath)
     // Include needed to allow relative @imports in stylus files
     .include(path.dirname(compileStep._fullInputPath))

@@ -18,7 +18,7 @@ describe 'Stylus (Meteor Tests)', ->
 
 
 
-  it 'compiles [.styl] files', ->
+  it 'compiles a ".styl" files', ->
     UI.materialize(Template.stylus_test_presence, div)
     div.style.display = 'block'
     document.body.appendChild(div)
@@ -30,7 +30,7 @@ describe 'Stylus (Meteor Tests)', ->
 
 
 
-  it 'imports a [.import.styl] file', ->
+  it 'imports a ".import.styl" file', ->
     UI.materialize(Template.stylus_test_import, div)
     div.style.display = 'block'
     document.body.appendChild(div)

@@ -5,9 +5,10 @@ Package.describe({
 
 Package._transitional_registerBuildPlugin({
   name: "compileStylus",
-  use: [],
+  use: ['coffeescript'],
   sources: [
-    'plugin/compile-stylus.js'
+    'plugin/compile-stylus.js',
+    'plugin/package-mixins.coffee'
   ],
   npmDependencies: { stylus: "0.47.1", nib: "1.0.3" }
 });
