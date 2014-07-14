@@ -11,14 +11,14 @@ Meteor.startup ->
 The base tests ported over from the core Meteor pacakge.
 ###
 
-describe 'Stylus (Meteor Tests)', ->
+describe 'Stylus (base Meteor package tests)', ->
   div = null
   beforeEach -> div = document.createElement('div')
   afterEach -> document.body.removeChild(div)
 
 
 
-  it 'compiles a ".styl" files', ->
+  it 'compiles a ".styl" file', ->
     UI.materialize(Template.stylus_test_presence, div)
     div.style.display = 'block'
     document.body.appendChild(div)
