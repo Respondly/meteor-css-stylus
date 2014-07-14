@@ -49,9 +49,11 @@ Plugin.registerSourceHandler("styl", function (compileStep) {
   });
 });
 
+
 // Register import.styl files with the dependency watcher, without actually
 // processing them. There is a similar rule in the less package.
-Plugin.registerSourceHandler("import.styl", function () {
-  // Do nothing
-});
+Plugin.registerSourceHandler("import.styl", function () { /* Do nothing */ });
+Plugin.registerSourceHandler("plugin.styl", function () { /* Do nothing */ });
+
+
 

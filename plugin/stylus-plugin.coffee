@@ -3,6 +3,15 @@ fsPath  = Npm.require 'path'
 
 
 
+# Register import.styl files with the dependency watcher, without actually
+# processing them. There is a similar rule in the less package.
+# Plugin.registerSourceHandler "import.styl" -> # Do nothing.
+# Plugin.registerSourceHandler "plugin.styl" -> # Do nothing.
+
+
+#  ----------------------------------------------------------------------
+
+
 ###
 A Stylus plugin that registers mixins within all packages.
 ###
@@ -50,6 +59,7 @@ packagePath = (path) ->
 
 includeDir = (style, dir) ->
   if fs.existsSync(dir)
+    console.log 'Stylus Plugin: ', dir
     style.include(dir)
 
 
