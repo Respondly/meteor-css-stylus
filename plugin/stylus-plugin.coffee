@@ -59,7 +59,7 @@ packagePath = (path) ->
 
 includeDir = (style, dir) ->
   if fs.existsSync(dir)
-    console.log 'Stylus Plugin: ', dir
+    # console.log 'Stylus Plugin: ', dir
     style.include(dir)
 
 
