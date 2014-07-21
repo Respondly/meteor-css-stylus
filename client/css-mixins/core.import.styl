@@ -34,3 +34,53 @@ abs-pos(left = 0, top = 0, right = 0, bottom = 0, unit=px)
   toUnit 'top', top, unit
   toUnit 'right', right, unit
   toUnit 'bottom', bottom, unit
+
+
+// Size --------------------------------------------------------
+
+
+size(width, height = width, unit=px)
+  toUnit 'width',  width,  unit
+  toUnit 'height', height, unit
+
+min-size(width, height = width, unit=px)
+  toUnit 'width',  min-width,  unit
+  toUnit 'height', min-height, unit
+
+
+
+// Images --------------------------------------------------------
+
+
+bg-image(path, width=null, height=null, repeat=null)
+  // Size.
+  height = width if height is null
+  size(width, height, 'px')
+
+  // Image path.
+  if match('.svg$', path)
+    // SVG's don't need an @2x retina version.
+    background-image url(path)
+  else
+    // Give all other image types the @2x retina version.
+    image path, unit(width, 'px'), unit(height, 'px')
+
+  // Repeat.
+  repeat = no-repeat if repeat is null
+  background-repeat repeat
+
+
+
+package-image-path(packageName, path)
+  base = '/packages/' + packageName + '/images'
+  base += '/' if not match('^\/', path)
+  base + path
+
+
+package-image(packageName, path, width=null, height=null, repeat=null)
+  path = package-image-path(packageName, path)
+  bg-image(path, width, height, repeat)
+
+
+
+
