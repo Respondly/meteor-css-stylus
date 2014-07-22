@@ -36,6 +36,25 @@ abs-pos(left = 0, top = 0, right = 0, bottom = 0, unit=px)
   toUnit 'bottom', bottom, unit
 
 
+
+abs-center-x()
+  position absolute
+  left 50%
+  transform translateX(-50%)
+
+abs-center-y()
+  position absolute
+  top 50%
+  transform translateY(-50%)
+
+abs-center-xy()
+  position absolute
+  left 50%
+  top 50%
+  transform translate(-50%, -50%)
+
+
+
 // Size --------------------------------------------------------
 
 
@@ -82,5 +101,13 @@ package-image(packageName, path, width=null, height=null, repeat=null)
   bg-image(path, width, height, repeat)
 
 
+
+// Sundry --------------------------------------------------------
+
+
+ellipsis()
+  text-overflow ellipsis
+  white-space nowrap
+  overflow hidden
 
 
