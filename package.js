@@ -25,7 +25,7 @@ Package.on_test(function (api) {
   api.use(['munit', 'coffeescript', 'chai', 'test-helpers', 'templating']);
   api.use('stylus-compiler');
 
-  // Generated with: github.com/philcockfield/meteor-package-loader
+  // Generated with: github.com/philcockfield/meteor-package-paths
   api.add_files('tests/client/sample/sample.html', 'client');
   api.add_files('tests/client/sample/sample.import.styl', 'client');
   api.add_files('tests/client/sample/sample.styl', 'client');
