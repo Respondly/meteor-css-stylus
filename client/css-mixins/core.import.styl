@@ -37,21 +37,25 @@ abs-pos(left = 0, top = 0, right = 0, bottom = 0, unit=px)
 
 
 
-abs-center-x()
+abs-center-x(offset = 0)
   position absolute
   left 50%
   transform translateX(-50%)
+  toUnit 'margin-left', offset
 
-abs-center-y()
+abs-center-y(offset = 0)
   position absolute
   top 50%
   transform translateY(-50%)
+  toUnit 'margin-top', offset
 
-abs-center-xy()
+abs-center-xy(offsetX = 0, offsetY = 0)
   position absolute
   left 50%
   top 50%
   transform translate(-50%, -50%)
+  toUnit 'margin-left', offsetX
+  toUnit 'margin-top', offsetY
 
 
 
