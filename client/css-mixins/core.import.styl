@@ -115,3 +115,30 @@ ellipsis()
   overflow hidden
 
 
+// ------------------------------------------------------
+
+
+/*
+// Source: http://css-tricks.com/snippets/css/media-queries-for-standard-devices/
+
+     To use:
+
+        Create a varialbe with the method, eg:
+
+            NARROW      = query-max-width(900)
+            WIDE        = query-min-width(901)
+
+        Then use the variable with an @media selector:
+
+            @media NARROW
+              background green
+              ...
+*/
+
+
+query-max-width(pixelWidth)
+  'only screen and (max-width : ' + pixelWidth + 'px)'
+
+query-min-width(pixelWidth)
+  'only screen and (min-width : ' + pixelWidth + 'px)'
+
