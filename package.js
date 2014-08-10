@@ -19,6 +19,14 @@ Package._transitional_registerBuildPlugin({
 });
 
 
+Package.on_use(function (api) {
+
+  // Generated with: github.com/philcockfield/meteor-package-paths
+  api.add_files('client/css-mixins/core.import.styl', 'client');
+  api.add_files('client/html5-reset.css', 'client');
+
+});
+
 
 
 Package.on_test(function (api) {
