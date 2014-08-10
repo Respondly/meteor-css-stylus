@@ -1,7 +1,7 @@
 @expect = chai.expect
 
 Meteor.startup ->
-  $('title').html('Tests:stylus-compiler')
+  $('title').html('Tests:css-stylus')
 
 
 # ----------------------------------------------------------------------

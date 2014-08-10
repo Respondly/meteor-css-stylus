@@ -23,7 +23,7 @@ Package._transitional_registerBuildPlugin({
 
 Package.on_test(function (api) {
   api.use(['munit', 'coffeescript', 'chai', 'test-helpers', 'templating']);
-  api.use('stylus-compiler');
+  api.use('css-stylus');
 
   // Generated with: github.com/philcockfield/meteor-package-paths
   api.add_files('tests/client/sample/sample.html', 'client');

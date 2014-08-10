@@ -1,5 +1,5 @@
 {
-  "name": "stylus-compiler",
+  "name": "css-stylus",
   "description": "Meteor Stylus package extended to support Mixins.",
   "homepage": "",
   "author": "Respondly (https://github.com/Respondly)",

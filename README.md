@@ -1,4 +1,4 @@
-# Stylus
+# CSS Stylus
 Meteor Stylus package extended to support Mixins.
 
 
