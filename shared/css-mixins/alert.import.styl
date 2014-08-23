@@ -1,0 +1,78 @@
+
+
+
+// Message Panel --------------------------------------------------
+
+
+message-panel()
+  position relative
+  border-radius 4px
+  padding 10px 14px
+  padding-top 5px
+  cursor default
+  box-shadow 0px 0px 10px 5px rgba(black, 0.05)
+  font-size 13px
+  p
+    font-size 13px
+    margin-bottom 10px
+
+  BORDER_COLOR = darken(white, 30%)
+  .title, h1
+    font-family $FONT_FAMILY
+    font-weight 700
+    font-size 13px
+    line-height 22px
+    border-bottom solid 1px BORDER_COLOR
+    MARGIN = 5px
+    padding-bottom MARGIN
+    margin-bottom  MARGIN + 2
+  a
+    text-decoration none
+    cursor pointer
+    &:hover
+      color $LINK_BLUE
+  hr
+    border-top solid 1px BORDER_COLOR
+    border-bottom none
+
+  .message, p
+    font-style italic
+    line-height 17px
+
+
+
+
+// Yellow Sticky --------------------------------------------------
+YELLOW_STICKY_TEXT_COLOR = #816d37
+
+
+yellow-sticky-bg()
+  background-image linear-gradient(top, #fff8c7, #fff5b5)
+
+
+
+yellow-sticky-colors()
+  yellow-sticky-bg()
+  border solid 1px #f0df97
+  color YELLOW_STICKY_TEXT_COLOR
+  p, h1
+    color YELLOW_STICKY_TEXT_COLOR
+  div[class^='ico-']
+    size 22px
+    background-repeat no-repeat
+
+
+yellow-sticky()
+  yellow-sticky-colors()
+  message-panel()
+  BORDER_COLOR = #f5e7a0
+  .title, h1
+    border-bottom-color BORDER_COLOR
+  hr
+    border-color BORDER_COLOR
+
+
+
+
+
+
