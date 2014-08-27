@@ -22,12 +22,7 @@ Package._transitional_registerBuildPlugin({
 Package.on_use(function (api) {
 
   // Generated with: github.com/philcockfield/meteor-package-paths
-  api.add_files('shared/_reset/html5-reset.css', 'client');
-  api.add_files('shared/_reset/html5-reset.css', 'server', { isAsset:true });
-  api.add_files('shared/css-mixins/alert.import.styl', 'client');
-  api.add_files('shared/css-mixins/alert.import.styl', 'server', { isAsset:true });
-  api.add_files('shared/css-mixins/core.import.styl', 'client');
-  api.add_files('shared/css-mixins/core.import.styl', 'server', { isAsset:true });
+  
 
 });
 
