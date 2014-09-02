@@ -7,7 +7,7 @@ Package.describe({
 
 Package._transitional_registerBuildPlugin({
   name: 'compileStylus',
-  use: ['coffeescript', 'sugar'],
+  use: ['coffeescript'],
   sources: [
     'plugin/compile-stylus.js',
     'plugin/stylus-plugin.coffee'
