@@ -11,7 +11,7 @@ When running for the first time:
 
 # Run Tests
 
-    mrt test-packages stylus-compiler
+    mrt test-packages css-stylus
 
 
 
