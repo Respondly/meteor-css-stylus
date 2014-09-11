@@ -9,11 +9,6 @@ When running for the first time:
     package update
 
 
-# Run Tests
-
-    mrt test-packages css-stylus
-
-
 
 # License (MIT)
 
