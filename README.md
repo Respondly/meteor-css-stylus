@@ -2,7 +2,7 @@
 Meteor Stylus package extended to support Mixins.
 
 
-# Installation
+## Installation
 When running for the first time:
 
     mrt update
@@ -10,7 +10,7 @@ When running for the first time:
 
 
 
-# License (MIT)
+## License (MIT)
 
 Copyright © 2014, **Respondly**
 
