@@ -1,5 +1,5 @@
 Package.describe({
-  name: 'respondly:css-stylus'
+  name: 'respondly:css-stylus',
   summary: 'Meteor Stylus package extended to support Mixins.',
   version: '0.0.1',
   git: 'https://github.com/Respondly/meteor-css-stylus.git'
