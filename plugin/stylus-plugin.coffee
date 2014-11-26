@@ -16,19 +16,6 @@ A Stylus plugin that registers mixins within all packages.
           style.include(dir)
 
 
-###
-
-16s
-27s
-15s
-
-----
-
-22s
-19s
-
-###
-
 
 # PRIVATE ----------------------------------------------------------------------
 
@@ -43,6 +30,7 @@ packageDirs = ->
       dirs.push(path)
 
   dirs = dirs.map (path) -> fsPath.resolve(path)
+  dirs = dirs.map (path) -> path if fs.existsSync(path)
   unique(dirs)
 
 
@@ -93,6 +81,7 @@ endsWith = (string, match) ->
 unique = (array) ->
   result = []
   for item in array
-    result.push(item) if result.indexOf(item) < 0
+    if item?
+      result.push(item) if result.indexOf(item) < 0
   result
 
