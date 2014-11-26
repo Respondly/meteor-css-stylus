@@ -21,11 +21,3 @@ Package._transitional_registerBuildPlugin({
 });
 
 
-Package.on_use(function (api) {
-
-  // Generated with: github.com/philcockfield/meteor-package-paths
-
-
-});
-
-
