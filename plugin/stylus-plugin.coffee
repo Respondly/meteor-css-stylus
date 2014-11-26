@@ -1,66 +1,98 @@
 fs      = Npm.require 'fs'
 fsPath  = Npm.require 'path'
 
+PLUGIN_DIRS = ['css_mixins', 'css-mixins', 'stylus-plugin']
 
 
-# Register import.styl files with the dependency watcher, without actually
-# processing them. There is a similar rule in the less package.
-# Plugin.registerSourceHandler "import.styl" -> # Do nothing.
-# Plugin.registerSourceHandler "plugin.styl" -> # Do nothing.
-
-
-#  ----------------------------------------------------------------------
 
 
 ###
 A Stylus plugin that registers mixins within all packages.
 ###
-
 @packageStylusPlugins = ->
   return (style) ->
-
-    pluginDirs = ['css_mixins', 'css-mixins', 'stylus-plugin']
-
-    # Add the package mixin.
-    # NOTE: Changes to "mixin" files will not auto-force a restart of the server.
-    #       Either restart the server manually, or change another file within the packages.
-
-    includePackageDir = (rootDir, pluginDir) ->
-        includeDir(style, packagePath("/#{ rootDir }/client/#{ pluginDir }"))
-        includeDir(style, packagePath("/#{ rootDir }/shared/#{ pluginDir }"))
-
-    for rootDir in fs.readdirSync(packagePath())
-      for pluginDir in pluginDirs
-        includePackageDir(rootDir, pluginDir)
+      for rootDir in packageDirs()
+        for dir in findPluginDirs(rootDir)
+          style.include(dir)
 
 
-    # Add the application's "plugin/mixins" folder if it exists.
-    includeAppDir = (pluginDir) ->
-        includeDir(style, fsPath.resolve("./packages/app/client/#{ pluginDir }"))
-        includeDir(style, fsPath.resolve("./packages/app/shared/#{ pluginDir }"))
+###
 
-        includeDir(style, fsPath.resolve("./client/#{ pluginDir }"))
-        includeDir(style, fsPath.resolve("./shared/#{ pluginDir }"))
+16s
+27s
+15s
 
-    for pluginDir in pluginDirs
-      includeAppDir(pluginDir)
+----
 
+22s
+19s
 
+###
 
 
 # PRIVATE ----------------------------------------------------------------------
 
 
 
-packagePath = (path) ->
-  path = (process.env.PACKAGE_DIRS || 'packages') + (path || '')
-  return fsPath.resolve(path)
+packageDirs = ->
+  dirs = []
+  dirs.push('packages') # Within the app.
+
+  if PACKAGE_DIRS = process.env.PACKAGE_DIRS
+    for path in PACKAGE_DIRS.split(':')
+      dirs.push(path)
+
+  dirs = dirs.map (path) -> fsPath.resolve(path)
+  unique(dirs)
 
 
-includeDir = (style, dir) ->
-  if fs.existsSync(dir)
-    # console.log 'Stylus Plugin: ', dir
-    style.include(dir)
 
 
+findPluginDirs = (rootDir) ->
+  dirs = []
+  walkDirs rootDir, (dir) ->
+      for pluginDir in PLUGIN_DIRS
+        dirs.push(dir) if endsWith(dir, pluginDir)
+  dirs
+
+
+
+
+walkDirs = (rootDir, func) ->
+  rootDir = fsPath.resolve(rootDir)
+
+  for dir in fs.readdirSync(rootDir)
+    # Prepare the path.
+    continue if dir[0] is '.'
+
+    # Ignore sym-links and non directories.
+    dir = fsPath.join(rootDir, dir)
+    stats = fs.lstatSync(dir)
+    continue if stats.isSymbolicLink()
+    continue unless stats.isDirectory()
+
+    # Invoke function.
+    func?(dir)
+
+    # Walk children.
+    walkDirs(dir, func)
+
+
+
+
+
+
+
+endsWith = (string, match) ->
+  index = string.indexOf(match)
+  return false if index < 0
+  index is string.length - match.length
+
+
+
+unique = (array) ->
+  result = []
+  for item in array
+    result.push(item) if result.indexOf(item) < 0
+  result
 
