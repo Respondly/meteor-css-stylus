@@ -7,6 +7,14 @@ Package.describe({
 
 
 
+
+Package.onUse(function (api) {
+  api.versionsFrom('1.0');
+});
+
+
+
+
 Package._transitional_registerBuildPlugin({
   name: 'compileStylus',
   use: ['coffeescript'],
