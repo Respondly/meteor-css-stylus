@@ -1,7 +1,7 @@
 Package.describe({
   name: 'respondly:css-stylus',
   summary: 'Meteor Stylus package extended to support Mixins.',
-  version: '1.0.0',
+  version: '1.0.3',
   git: 'https://github.com/Respondly/meteor-css-stylus.git'
 });
 
@@ -12,7 +12,7 @@ Package.onUse(function (api) {
   api.versionsFrom('1.0');
 
   // Generated with: github.com/philcockfield/meteor-package-paths
-  
+
 
 });
 

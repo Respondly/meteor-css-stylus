@@ -9,9 +9,16 @@ PLUGIN_DIRS = ['css_mixins', 'css-mixins', 'stylus-plugin']
 ###
 A Stylus plugin that registers mixins within all packages.
 ###
-@packageStylusPlugins = ->
+@packageStylusPlugins = (compileStep) ->
+  # Derive paths.
+  fullPath = compileStep.fullInputPath
+  relativePath = compileStep.inputPath
+  currentPackageDir = fullPath.substring(0, (fullPath.length - relativePath.length))
+
+  # Return a function that adds "mix-in" directories to
+  # the style compiler.
   return (style) ->
-      for rootDir in packageDirs()
+      for rootDir in packageDirs(currentPackageDir)
         for dir in findPluginDirs(rootDir)
           style.include(dir)
 
@@ -21,9 +28,10 @@ A Stylus plugin that registers mixins within all packages.
 
 
 
-packageDirs = ->
+packageDirs = (currentPackageDir) ->
   dirs = []
   dirs.push('packages') # Within the app.
+  dirs.push(currentPackageDir)
 
   if PACKAGE_DIRS = process.env.PACKAGE_DIRS
     for path in PACKAGE_DIRS.split(':')
@@ -31,7 +39,8 @@ packageDirs = ->
 
   dirs = dirs.map (path) -> fsPath.resolve(path)
   dirs = dirs.map (path) -> path if fs.existsSync(path)
-  unique(dirs)
+  dirs = unique(dirs)
+  dirs
 
 
 

@@ -19,7 +19,7 @@ Plugin.registerSourceHandler("styl", {archMatching: 'web'}, function (compileSte
   stylus(compileStep.read().toString('utf8'))
     .use(nib())
 
-    .use(packageStylusPlugins()) // <<== EXTENDED FROM METEOR-CORE HERE.
+    .use(packageStylusPlugins(compileStep)) // <<== EXTENDED FROM METEOR-CORE HERE.
 
     .set('filename', compileStep.inputPath)
     // Include needed to allow relative @imports in stylus files
