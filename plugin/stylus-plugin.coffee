@@ -20,7 +20,8 @@ A Stylus plugin that registers mixins within all packages.
   return (style) ->
       for rootDir in packageDirs(currentPackageDir)
         for dir in findPluginDirs(rootDir)
-          style.include(dir)
+          if fs.existsSync(dir)
+            style.include(dir)
 
 
 
