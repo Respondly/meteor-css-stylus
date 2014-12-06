@@ -34,10 +34,6 @@ packageDirs = (currentPackageDir) ->
   dirs.push('packages') # Within the app.
   dirs.push(currentPackageDir)
 
-  if PACKAGE_DIRS = process.env.PACKAGE_DIRS
-    for path in PACKAGE_DIRS.split(':')
-      dirs.push(path)
-
   dirs = dirs.map (path) -> fsPath.resolve(path)
   dirs = dirs.map (path) -> path if fs.existsSync(path)
   dirs = unique(dirs)

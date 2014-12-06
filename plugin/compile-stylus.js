@@ -13,12 +13,15 @@ var nib = Npm.require('nib');
 var path = Npm.require('path');
 var Future = Npm.require('fibers/future');
 
+
+
 // Plugin.registerSourceHandler("styl", function (compileStep) {
 Plugin.registerSourceHandler("styl", {archMatching: 'web'}, function (compileStep) {
   var f = new Future;
   stylus(compileStep.read().toString('utf8'))
     .use(nib())
 
+    .use(Npm.require('css-common')())       // <<== EXTENDED FROM METEOR-CORE HERE.
     .use(packageStylusPlugins(compileStep)) // <<== EXTENDED FROM METEOR-CORE HERE.
 
     .set('filename', compileStep.inputPath)

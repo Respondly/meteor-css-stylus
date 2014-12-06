@@ -27,8 +27,9 @@ Package._transitional_registerBuildPlugin({
     'plugin/stylus-plugin.coffee'
   ],
   npmDependencies: {
-    stylus: '0.47.1',
-    nib:    '1.0.3'
+    'stylus':     '0.47.1',
+    'nib':        '1.0.3',
+    'css-common': '1.0.18'
   }
 });
 
