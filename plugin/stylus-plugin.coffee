@@ -18,10 +18,18 @@ A Stylus plugin that registers mixins within all packages.
   # Return a function that adds "mix-in" directories to
   # the style compiler.
   return (style) ->
-      for rootDir in packageDirs(currentPackageDir)
+      # Look in the current package, and the "/packages" folder within an app.
+      for rootDir in processDirs(['packages', currentPackageDir])
         for dir in findPluginDirs(rootDir)
-          if fs.existsSync(dir)
-            style.include(dir)
+          style.include(dir)
+
+      # Look for 'css-mixins' (et al) folders within known locations
+      # with any folder specified within PACKAGE_DIRS.
+      #   -  /<package>/css-mixins
+      #   -  /<package>/client/css-mixins
+      #   -  /<package>/shared/css-mixins
+      for dir in sharedPackageDirs()
+        style.include(dir)
 
 
 
@@ -29,15 +37,26 @@ A Stylus plugin that registers mixins within all packages.
 
 
 
-packageDirs = (currentPackageDir) ->
+sharedPackageDirs = ->
   dirs = []
-  dirs.push('packages') # Within the app.
-  dirs.push(currentPackageDir)
-
   if PACKAGE_DIRS = process.env.PACKAGE_DIRS
     for path in PACKAGE_DIRS.split(':')
-      dirs.push(path)
+      for packageDir in fs.readdirSync(path)
+        continue if packageDir[0] is '.' # Exclude .DS_Store, .git etc.
+        packageDir = fsPath.join(path, packageDir)
+        for domain in ['client', 'shared', '.']
+          for pluginDir in PLUGIN_DIRS
+            pluginDir = fsPath.join(fsPath.join(packageDir, domain), pluginDir)
+            if fs.existsSync(pluginDir)
+              dirs.push(pluginDir)
 
+  processDirs(dirs)
+
+
+
+
+processDirs = (dirs) ->
+  dirs = compact(dirs)
   dirs = dirs.map (path) -> fsPath.resolve(path)
   dirs = dirs.map (path) -> path if fs.existsSync(path)
   dirs = unique(dirs)
@@ -78,6 +97,7 @@ walkDirs = (rootDir, func) ->
 
 
 
+# UTIL ----------------------------------------------------------------------
 
 
 
@@ -95,3 +115,9 @@ unique = (array) ->
       result.push(item) if result.indexOf(item) < 0
   result
 
+
+compact = (array) ->
+  result = []
+  for item in array
+    result.push(item) if item?
+  result
