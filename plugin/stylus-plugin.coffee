@@ -15,13 +15,17 @@ A Stylus plugin that registers mixins within all packages.
   relativePath = compileStep.inputPath
   currentPackageDir = fullPath.substring(0, (fullPath.length - relativePath.length))
 
+
   # Return a function that adds "mix-in" directories to
   # the style compiler.
   return (style) ->
+      include = (dir) ->
+          style.include(dir)
+
       # Look in the current package, and the "/packages" folder within an app.
       for rootDir in processDirs(['packages', currentPackageDir])
         for dir in findPluginDirs(rootDir)
-          style.include(dir)
+          include(dir)
 
       # Look for 'css-mixins' (et al) folders within known locations
       # with any folder specified within PACKAGE_DIRS.
@@ -29,7 +33,7 @@ A Stylus plugin that registers mixins within all packages.
       #   -  /<package>/client/css-mixins
       #   -  /<package>/shared/css-mixins
       for dir in sharedPackageDirs()
-        style.include(dir)
+        include(dir)
 
 
 
