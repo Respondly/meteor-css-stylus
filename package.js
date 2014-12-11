@@ -12,7 +12,7 @@ Package.onUse(function (api) {
   // api.versionsFrom('1.0');
 
   // Generated with: github.com/philcockfield/meteor-package-paths
-  
+
 
 });
 
