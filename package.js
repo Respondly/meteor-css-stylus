@@ -29,7 +29,7 @@ Package._transitional_registerBuildPlugin({
   npmDependencies: {
     'stylus':     '0.47.1',
     'nib':        '1.0.3',
-    'css-common': '1.0.18'
+    'css-common': '1.0.19'
   }
 });
 
