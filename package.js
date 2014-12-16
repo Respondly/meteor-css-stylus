@@ -12,7 +12,7 @@ Package.onUse(function (api) {
   // api.versionsFrom('1.0');
 
   // Generated with: github.com/philcockfield/meteor-package-paths
-  
+
 
 });
 
@@ -29,7 +29,7 @@ Package._transitional_registerBuildPlugin({
   npmDependencies: {
     'stylus':     '0.47.1',
     'nib':        '1.0.3',
-    'css-common': '1.0.22'
+    'css-common': '1.0.24'
   }
 });
 
