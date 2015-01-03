@@ -20,8 +20,6 @@ Plugin.registerSourceHandler("styl", {archMatching: 'web'}, function (compileSte
   var f = new Future;
   stylus(compileStep.read().toString('utf8'))
     .use(nib())
-
-    .use(Npm.require('css-common')())       // <<== EXTENDED FROM METEOR-CORE HERE.
     .use(packageStylusPlugins(compileStep)) // <<== EXTENDED FROM METEOR-CORE HERE.
 
     .set('filename', compileStep.inputPath)
