@@ -1,7 +1,7 @@
 # CSS Stylus
 Meteor Stylus package extended to support Mixins.
 
-
+[![Circle CI](https://circleci.com/gh/Respondly/meteor-css-stylus.svg?style=svg)](https://circleci.com/gh/Respondly/meteor-css-stylus)
 
 
 ## License (MIT)
